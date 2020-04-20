@@ -422,6 +422,7 @@ fn instantiate_last_round<H, N, E: Environment<H, N>>(
 	}
 }
 
+/// Allows querying the state of the voter.
 pub trait VoterState<Id> {
 	fn voter_state(&self) -> report::VoterState<Id>;
 }
@@ -432,6 +433,7 @@ pub mod report {
 	use crate::BlockNumberOps;
 	use crate::voter::Environment;
 
+	/// Basic data struct for the state of a round.
 	pub struct RoundState<Id> {
 		pub total_weight: u64,
 		pub threshold_weight: u64,
@@ -443,6 +445,8 @@ pub mod report {
 		pub precommit_ids: HashSet<Id>,
 	}
 
+	/// Basic data struct for the current state of the voter in a form suitable
+	/// for passing on to other systems.
 	pub struct VoterState<Id> {
 		pub background_rounds: HashMap<u64, RoundState<Id>>,
 		pub best_round: (u64, RoundState<Id>),
