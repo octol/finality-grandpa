@@ -43,7 +43,7 @@ impl<Id: Ord + Eq> VoterSet<Id> {
 		self.weights.contains_key(id)
 	}
 
-	// Get voter by index.
+	/// Get voter by index.
 	pub fn voter_by_index(&self, idx: usize) -> &(Id, u64) {
 		&self.voters[idx]
 	}
@@ -92,6 +92,7 @@ impl<Id: Eq + Clone + Ord> std::iter::FromIterator<(Id, u64)> for VoterSet<Id> {
 	}
 }
 
+/// The voter info contains the canonical index and weight of the voter.
 #[derive(Clone, PartialEq, Eq)]
 #[cfg_attr(any(feature = "std", test), derive(Debug))]
 pub struct VoterInfo {

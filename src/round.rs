@@ -207,7 +207,7 @@ pub struct State<H, N> {
 }
 
 impl<H: Clone, N: Clone> State<H, N> {
-	// Genesis state.
+	/// Genesis state.
 	pub fn genesis(genesis: (H, N)) -> Self {
 		State {
 			prevote_ghost: Some(genesis.clone()),
@@ -468,7 +468,7 @@ impl<Id, H, N, Signature> Round<Id, H, N, Signature> where
 		Ok(import_result)
 	}
 
-	// Get current
+	/// Return the current state.
 	pub fn state(&self) -> State<H, N> {
 		State {
 			prevote_ghost: self.prevote_ghost.clone(),
@@ -680,7 +680,7 @@ impl<Id, H, N, Signature> Round<Id, H, N, Signature> where
 		self.completable
 	}
 
-	// Threshold number of weight for supermajority.
+	/// Threshold number of weight for supermajority.
 	pub fn threshold(&self) -> u64 {
 		self.voters.threshold()
 	}

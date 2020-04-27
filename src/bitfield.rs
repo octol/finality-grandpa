@@ -238,6 +238,7 @@ impl Clone for Context {
 
 #[cfg(feature = "std")]
 impl Context {
+	/// Create a new Context instance given the number of voters.
 	pub fn new(n_voters: usize) -> Self {
 		Context {
 			n_voters,
