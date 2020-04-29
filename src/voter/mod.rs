@@ -429,11 +429,11 @@ fn instantiate_last_round<H, N, E: Environment<H, N>>(
 	}
 }
 
-/// Trait for querying the state of the voter. Used by `Voter` to return a queryable object without exposing too may
-/// data types.
+/// Trait for querying the state of the voter. Used by `Voter` to return a queryable object
+/// without exposing too many data types.
 pub trait VoterState<Id: Eq + std::hash::Hash> {
-	/// Returns a plain data type, `report::VoterState`, describing the current state of the voter relevant to the
-	/// voting process.
+	/// Returns a plain data type, `report::VoterState`, describing the current state
+	/// of the voter relevant to the voting process.
 	fn voter_state(&self) -> report::VoterState<Id>;
 }
 
@@ -466,7 +466,7 @@ pub mod report {
 	#[derive(PartialEq, Eq)]
 	#[cfg_attr(test, derive(Debug))]
 	pub struct VoterState<Id: Eq + std::hash::Hash> {
-		/// Voting rounds run in the background.
+		/// Voting rounds running in the background.
 		pub background_rounds: HashMap<u64, RoundState<Id>>,
 		/// The current best voting round.
 		pub best_round: (u64, RoundState<Id>),

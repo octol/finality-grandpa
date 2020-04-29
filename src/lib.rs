@@ -97,7 +97,7 @@ pub struct Prevote<H, N> {
 }
 
 impl<H, N> Prevote<H, N> {
-	/// Create a new Prevote from the target block's hash and number.
+	/// Create a new prevote for the given block (hash and number).
 	pub fn new(target_hash: H, target_number: N) -> Self {
 		Prevote { target_hash, target_number }
 	}
@@ -114,7 +114,7 @@ pub struct Precommit<H, N> {
 }
 
 impl<H, N> Precommit<H, N> {
-	/// Create a new Precommit from the target block's hash and number.
+	/// Create a new precommit for the given block (hash and number).
 	pub fn new(target_hash: H, target_number: N) -> Self {
 		Precommit { target_hash, target_number }
 	}
@@ -132,14 +132,13 @@ pub struct PrimaryPropose<H, N> {
 }
 
 impl<H, N> PrimaryPropose<H, N> {
-	/// Create a new primary proposed block from the targets block's hash and
-	/// number.
+	/// Create a new primary proposal for the given block (hash and number).
 	pub fn new(target_hash: H, target_number: N) -> Self {
 		PrimaryPropose { target_hash, target_number }
 	}
 }
 
-/// Top-level Error type.
+/// Top-level error type used by this crate.
 #[derive(Clone, PartialEq)]
 #[cfg_attr(any(feature = "std", test), derive(Debug))]
 pub enum Error {
@@ -239,7 +238,7 @@ pub enum Message<H, N> {
 	/// A precommit message.
 	#[cfg_attr(feature = "derive-codec", codec(index = "1"))]
 	Precommit(Precommit<H, N>),
-	/// Primary proposed block.
+	/// A primary proposal message.
 	#[cfg_attr(feature = "derive-codec", codec(index = "2"))]
 	PrimaryPropose(PrimaryPropose<H, N>),
 }
